@@ -37,6 +37,12 @@ body {
   overflow-y: auto;
 }
 
+/* ═══ LANG SWITCH ═══ */
+.lang-switch { position:fixed; top:40px; right:40px; z-index:200; display:flex; gap:4px; }
+.lang-btn { font-family:'Rubik',sans-serif; font-size:11px; font-weight:600; letter-spacing:2px; text-transform:uppercase; background:none; border:none; cursor:pointer; padding:6px 10px; border-radius:3px; transition:all .3s; color:var(--ash-dim); }
+.lang-btn.active { color:var(--neon); border:1px solid rgba(116,228,197,.3); background:rgba(116,228,197,.05); }
+.lang-btn:not(.active):hover { color:var(--ash-soft); }
+
 /* ═══ LAYOUT ═══ */
 .page { max-width: 760px; width: 100%; margin: 0 auto; padding: 120px 48px 160px; position: relative; z-index: 1; }
 
@@ -143,6 +149,7 @@ body {
   .section { margin-bottom: 72px; }
   .closing { padding-top: 72px; }
   .punchline { font-size: clamp(20px,6vw,30px); }
+  .lang-switch { top:20px; right:20px; }
 }
 @media (max-width:480px) {
   .page { padding: 60px 20px 100px; }
@@ -155,70 +162,75 @@ body {
 <canvas id="networkBg"></canvas>
 <div class="grain"></div>
 
+<div class="lang-switch">
+  <button class="lang-btn active" onclick="setLang('ru')">RU</button>
+  <button class="lang-btn" onclick="setLang('en')">EN</button>
+</div>
+
 <div class="page">
 
   <!-- COVER -->
   <div class="cover">
     <img class="logo-hero reveal" src="humavera-logo.svg" alt="Humavéra">
-    <div class="cover-title reveal d1">Манифест</div>
+    <div class="cover-title reveal d1" data-ru="Манифест" data-en="Manifesto">Манифест</div>
   </div>
 
   <!-- 01. ПРОЛОГ -->
   <div class="section">
-    <div class="slide-label reveal">I <span>—</span> Пролог</div>
-    <p class="body-text reveal d1">Алгоритмы забирают у&nbsp;миллионов людей привычные функции&nbsp;— и&nbsp;обнажают пустоту, которая всегда скрывалась за&nbsp;социальными масками.</p>
-    <p class="body-text reveal d1">Это больно. Но&nbsp;это отрезвляет.</p>
-    <p class="body-text reveal d2">Под этой пустотой&nbsp;— живое. Дар, призвание, настоящее лицо. То, что не&nbsp;измеряется метриками и&nbsp;не&nbsp;устаревает с&nbsp;новым технологическим циклом.</p>
-    <div class="punchline reveal d3">Алгоритмы забрали ложные опоры. Настоящие&nbsp;— остались.</div>
+    <div class="slide-label reveal" data-ru="I <span>—</span> Пролог" data-en="I <span>—</span> Prologue">I <span>—</span> Пролог</div>
+    <p class="body-text reveal d1" data-ru="Алгоритмы забирают у&nbsp;миллионов людей привычные функции&nbsp;— и&nbsp;обнажают пустоту, которая всегда скрывалась за&nbsp;социальными масками." data-en="Algorithms are taking away the familiar functions of millions of people&nbsp;— and revealing the void that has always hidden behind social masks.">Алгоритмы забирают у&nbsp;миллионов людей привычные функции&nbsp;— и&nbsp;обнажают пустоту, которая всегда скрывалась за&nbsp;социальными масками.</p>
+    <p class="body-text reveal d1" data-ru="Это больно. Но&nbsp;это отрезвляет." data-en="It hurts. But it is sobering.">Это больно. Но&nbsp;это отрезвляет.</p>
+    <p class="body-text reveal d2" data-ru="Под этой пустотой&nbsp;— живое. Дар, призвание, настоящее лицо. То, что не&nbsp;измеряется метриками и&nbsp;не&nbsp;устаревает с&nbsp;новым технологическим циклом." data-en="Beneath this void&nbsp;— something alive. A gift, a calling, a true face. Something that cannot be measured in metrics and does not grow obsolete with each new technology cycle.">Под этой пустотой&nbsp;— живое. Дар, призвание, настоящее лицо. То, что не&nbsp;измеряется метриками и&nbsp;не&nbsp;устаревает с&nbsp;новым технологическим циклом.</p>
+    <div class="punchline reveal d3" data-ru="Алгоритмы забрали ложные опоры. Настоящие&nbsp;— остались." data-en="Algorithms have taken away the false foundations. The real ones remain.">Алгоритмы забрали ложные опоры. Настоящие&nbsp;— остались.</div>
   </div>
 
   <!-- 02. ЧЕЛОВЕК -->
   <div class="section">
-    <div class="slide-label reveal">II <span>—</span> Человек</div>
-    <p class="body-text reveal d1">Человек&nbsp;— не&nbsp;ресурс и&nbsp;не&nbsp;набор данных. Человек&nbsp;— субъект.</p>
-    <p class="body-text reveal d2">Тот, кто способен любить, создавать, жертвовать, ошибаться и&nbsp;начинать заново. Эту способность невозможно автоматизировать.</p>
-    <p class="body-text reveal d3">Каждый несёт в&nbsp;себе талант. Задача нашего времени&nbsp;— помочь человеку вспомнить о&nbsp;нём, и&nbsp;преумножить.</p>
+    <div class="slide-label reveal" data-ru="II <span>—</span> Человек" data-en="II <span>—</span> The Human">II <span>—</span> Человек</div>
+    <p class="body-text reveal d1" data-ru="Человек&nbsp;— не&nbsp;ресурс и&nbsp;не&nbsp;набор данных. Человек&nbsp;— субъект." data-en="A human being is not a resource or a dataset. A human being is a subject.">Человек&nbsp;— не&nbsp;ресурс и&nbsp;не&nbsp;набор данных. Человек&nbsp;— субъект.</p>
+    <p class="body-text reveal d2" data-ru="Тот, кто способен любить, создавать, жертвовать, ошибаться и&nbsp;начинать заново. Эту способность невозможно автоматизировать." data-en="One who is capable of loving, creating, sacrificing, failing, and starting over. This capacity cannot be automated.">Тот, кто способен любить, создавать, жертвовать, ошибаться и&nbsp;начинать заново. Эту способность невозможно автоматизировать.</p>
+    <p class="body-text reveal d3" data-ru="Каждый несёт в&nbsp;себе талант. Задача нашего времени&nbsp;— помочь человеку вспомнить о&nbsp;нём, и&nbsp;преумножить." data-en="Everyone carries a talent within. The task of our time is to help people remember it&nbsp;— and multiply it.">Каждый несёт в&nbsp;себе талант. Задача нашего времени&nbsp;— помочь человеку вспомнить о&nbsp;нём, и&nbsp;преумножить.</p>
   </div>
 
   <!-- 03. ИНСТРУМЕНТ -->
   <div class="section">
-    <div class="slide-label reveal">III <span>—</span> Инструмент</div>
-    <p class="body-text reveal d1">Технология&nbsp;— это инструмент. Фонарь. Она освещает путь, но&nbsp;шаг делает человек.</p>
-    <p class="body-text reveal d2">Мы&nbsp;не&nbsp;создаём машины, чтобы заменить человеческую суть. Мы&nbsp;используем технологии, чтобы очистить зеркало. Снять социальный шум, пробиться сквозь страхи и&nbsp;ментальные защиты. Показать человеку его подлинное отражение.</p>
-    <p class="body-text reveal d3">Принимать, изменяться и&nbsp;действовать&nbsp;— его ответственность.</p>
+    <div class="slide-label reveal" data-ru="III <span>—</span> Инструмент" data-en="III <span>—</span> The Tool">III <span>—</span> Инструмент</div>
+    <p class="body-text reveal d1" data-ru="Технология&nbsp;— это инструмент. Фонарь. Она освещает путь, но&nbsp;шаг делает человек." data-en="Technology is a tool. A lantern. It lights the path, but the step is taken by the human.">Технология&nbsp;— это инструмент. Фонарь. Она освещает путь, но&nbsp;шаг делает человек.</p>
+    <p class="body-text reveal d2" data-ru="Мы&nbsp;не&nbsp;создаём машины, чтобы заменить человеческую суть. Мы&nbsp;используем технологии, чтобы очистить зеркало. Снять социальный шум, пробиться сквозь страхи и&nbsp;ментальные защиты. Показать человеку его подлинное отражение." data-en="We do not build machines to replace the human essence. We use technology to clean the mirror. To strip away social noise, cut through fear and mental defenses. To show a person their true reflection.">Мы&nbsp;не&nbsp;создаём машины, чтобы заменить человеческую суть. Мы&nbsp;используем технологии, чтобы очистить зеркало. Снять социальный шум, пробиться сквозь страхи и&nbsp;ментальные защиты. Показать человеку его подлинное отражение.</p>
+    <p class="body-text reveal d3" data-ru="Принимать, изменяться и&nbsp;действовать&nbsp;— его ответственность." data-en="To accept, to change, to act&nbsp;— that is their responsibility.">Принимать, изменяться и&nbsp;действовать&nbsp;— его ответственность.</p>
   </div>
 
   <!-- 04. ОТВЕТСТВЕННОСТЬ -->
   <div class="section">
-    <div class="slide-label reveal">IV <span>—</span> Ответственность</div>
-    <div class="punchline reveal d1" style="margin-bottom:48px;">Человек свободен. И&nbsp;потому&nbsp;— ответственен.</div>
-    <p class="body-text reveal d2">За&nbsp;свой выбор, за&nbsp;тех, кто рядом, за&nbsp;то, как он&nbsp;распоряжается своим временем и&nbsp;талантом. Ни&nbsp;один алгоритм не&nbsp;снимет с&nbsp;нас бремя этого выбора.</p>
-    <p class="body-text reveal d3">Наши инструменты лишь возвращают человеку смелость посмотреть правде в&nbsp;глаза. Правда принадлежит ему. Путь&nbsp;— тоже.</p>
+    <div class="slide-label reveal" data-ru="IV <span>—</span> Ответственность" data-en="IV <span>—</span> Responsibility">IV <span>—</span> Ответственность</div>
+    <div class="punchline reveal d1" style="margin-bottom:48px;" data-ru="Человек свободен. И&nbsp;потому&nbsp;— ответственен." data-en="The human is free. And therefore&nbsp;— responsible.">Человек свободен. И&nbsp;потому&nbsp;— ответственен.</div>
+    <p class="body-text reveal d2" data-ru="За&nbsp;свой выбор, за&nbsp;тех, кто рядом, за&nbsp;то, как он&nbsp;распоряжается своим временем и&nbsp;талантом. Ни&nbsp;один алгоритм не&nbsp;снимет с&nbsp;нас бремя этого выбора." data-en="For their choices, for those around them, for how they spend their time and talent. No algorithm will lift the burden of that choice from us.">За&nbsp;свой выбор, за&nbsp;тех, кто рядом, за&nbsp;то, как он&nbsp;распоряжается своим временем и&nbsp;талантом. Ни&nbsp;один алгоритм не&nbsp;снимет с&nbsp;нас бремя этого выбора.</p>
+    <p class="body-text reveal d3" data-ru="Наши инструменты лишь возвращают человеку смелость посмотреть правде в&nbsp;глаза. Правда принадлежит ему. Путь&nbsp;— тоже." data-en="Our tools simply return to a person the courage to look truth in the eye. The truth belongs to them. So does the path.">Наши инструменты лишь возвращают человеку смелость посмотреть правде в&nbsp;глаза. Правда принадлежит ему. Путь&nbsp;— тоже.</p>
   </div>
 
   <!-- 05. СМЫСЛ -->
   <div class="section">
-    <div class="slide-label reveal">V <span>—</span> Смысл</div>
-    <p class="body-text reveal d1">Смысл невозможно оцифровать. Любовь невозможно алгоритмизировать.</p>
-    <p class="body-text reveal d2">Технологии могут лишь подвести к&nbsp;порогу. Дальше начинается территория живых.</p>
-    <p class="body-text reveal d3">Смысл не&nbsp;рождается в&nbsp;потреблении. Он&nbsp;рождается между людьми: в&nbsp;совместном труде, в&nbsp;честном разговоре, в&nbsp;преодолении пустыни.</p>
-    <div class="punchline reveal d4">Человек счастлив только тогда, когда отдаёт себя тому, что больше его самого</div>
+    <div class="slide-label reveal" data-ru="V <span>—</span> Смысл" data-en="V <span>—</span> Meaning">V <span>—</span> Смысл</div>
+    <p class="body-text reveal d1" data-ru="Смысл невозможно оцифровать. Любовь невозможно алгоритмизировать." data-en="Meaning cannot be digitized. Love cannot be algorithmized.">Смысл невозможно оцифровать. Любовь невозможно алгоритмизировать.</p>
+    <p class="body-text reveal d2" data-ru="Технологии могут лишь подвести к&nbsp;порогу. Дальше начинается территория живых." data-en="Technology can only bring you to the threshold. Beyond it begins the territory of the living.">Технологии могут лишь подвести к&nbsp;порогу. Дальше начинается территория живых.</p>
+    <p class="body-text reveal d3" data-ru="Смысл не&nbsp;рождается в&nbsp;потреблении. Он&nbsp;рождается между людьми: в&nbsp;совместном труде, в&nbsp;честном разговоре, в&nbsp;преодолении пустыни." data-en="Meaning is not born in consumption. It is born between people: in shared work, in honest conversation, in crossing the desert together.">Смысл не&nbsp;рождается в&nbsp;потреблении. Он&nbsp;рождается между людьми: в&nbsp;совместном труде, в&nbsp;честном разговоре, в&nbsp;преодолении пустыни.</p>
+    <div class="punchline reveal d4" data-ru="Человек счастлив только тогда, когда отдаёт себя тому, что больше его самого" data-en="A person is only happy when they give themselves to something greater than themselves">Человек счастлив только тогда, когда отдаёт себя тому, что больше его самого</div>
   </div>
 
   <!-- 06. ВСТРЕЧА -->
   <div class="section">
-    <div class="slide-label reveal">VI <span>—</span> Встреча</div>
-    <p class="body-text reveal d1">Мы&nbsp;строим среду для совместного созидания. Где одиночка находит соратника. Где ценность измеряется не&nbsp;лайками, а&nbsp;глубиной вклада.</p>
-    <p class="body-text reveal d3">Живая встреча двух людей, объединённых мировоззрением и&nbsp;намерением создавать, меняет реальность. Команда из&nbsp;пяти человек, которые видят друг друга по-настоящему, сильнее тысячной толпы равнодушных.</p>
-    <div class="punchline reveal d4">Будущее принадлежит настоящим</div>
+    <div class="slide-label reveal" data-ru="VI <span>—</span> Встреча" data-en="VI <span>—</span> The Encounter">VI <span>—</span> Встреча</div>
+    <p class="body-text reveal d1" data-ru="Мы&nbsp;строим среду для совместного созидания. Где одиночка находит соратника. Где ценность измеряется не&nbsp;лайками, а&nbsp;глубиной вклада." data-en="We are building an environment for co-creation. Where a lone individual finds an ally. Where value is measured not by likes, but by the depth of contribution.">Мы&nbsp;строим среду для совместного созидания. Где одиночка находит соратника. Где ценность измеряется не&nbsp;лайками, а&nbsp;глубиной вклада.</p>
+    <p class="body-text reveal d3" data-ru="Живая встреча двух людей, объединённых мировоззрением и&nbsp;намерением создавать, меняет реальность. Команда из&nbsp;пяти человек, которые видят друг друга по-настоящему, сильнее тысячной толпы равнодушных." data-en="A living encounter between two people united by worldview and the intention to create changes reality. A team of five who truly see each other is stronger than a thousand indifferent strangers.">Живая встреча двух людей, объединённых мировоззрением и&nbsp;намерением создавать, меняет реальность. Команда из&nbsp;пяти человек, которые видят друг друга по-настоящему, сильнее тысячной толпы равнодушных.</p>
+    <div class="punchline reveal d4" data-ru="Будущее принадлежит настоящим" data-en="The future belongs to the real">Будущее принадлежит настоящим</div>
   </div>
 
   <!-- 07. МЫ -->
   <div class="closing">
-    <div class="slide-label reveal">VII <span>—</span> Мы</div>
-    <p class="body-text reveal d1">Мы&nbsp;не&nbsp;пишем код, чтобы упростить человеку жизнь. Мы&nbsp;строим инструменты, чтобы вернуть человеку его самого.</p>
-    <p class="body-text reveal d2">В&nbsp;эпоху цифровой пустоши мы&nbsp;возводим Цитадель. Место, куда люди приходят без масок, чтобы объединить свои таланты и&nbsp;строить то, что имеет значение.</p>
-    <p class="body-text reveal d3">Это трудный путь. Но&nbsp;только он&nbsp;ведёт к&nbsp;подлинному.</p>
+    <div class="slide-label reveal" data-ru="VII <span>—</span> Мы" data-en="VII <span>—</span> We">VII <span>—</span> Мы</div>
+    <p class="body-text reveal d1" data-ru="Мы&nbsp;не&nbsp;пишем код, чтобы упростить человеку жизнь. Мы&nbsp;строим инструменты, чтобы вернуть человеку его самого." data-en="We do not write code to make life easier. We build tools to return a person to themselves.">Мы&nbsp;не&nbsp;пишем код, чтобы упростить человеку жизнь. Мы&nbsp;строим инструменты, чтобы вернуть человеку его самого.</p>
+    <p class="body-text reveal d2" data-ru="В&nbsp;эпоху цифровой пустоши мы&nbsp;возводим Цитадель. Место, куда люди приходят без масок, чтобы объединить свои таланты и&nbsp;строить то, что имеет значение." data-en="In the age of digital wasteland, we are building the Citadel. A place where people arrive without masks, to unite their talents and build what matters.">В&nbsp;эпоху цифровой пустоши мы&nbsp;возводим Цитадель. Место, куда люди приходят без масок, чтобы объединить свои таланты и&nbsp;строить то, что имеет значение.</p>
+    <p class="body-text reveal d3" data-ru="Это трудный путь. Но&nbsp;только он&nbsp;ведёт к&nbsp;подлинному." data-en="It is a difficult path. But it is the only one that leads to what is real.">Это трудный путь. Но&nbsp;только он&nbsp;ведёт к&nbsp;подлинному.</p>
     <div class="closing-line reveal d4" style="margin-left:0;"></div>
     <div class="closing-year reveal d4">2026</div>
   </div>
@@ -294,6 +306,16 @@ body {
   draw();
   window.addEventListener('resize', init);
 })();
+
+function setLang(lang) {
+  document.querySelectorAll('[data-ru]').forEach(function(el) {
+    el.innerHTML = lang === 'en' ? el.dataset.en : el.dataset.ru;
+  });
+  document.querySelectorAll('.lang-btn').forEach(function(btn) {
+    btn.classList.toggle('active', btn.textContent === lang.toUpperCase());
+  });
+  document.documentElement.lang = lang;
+}
 </script>
 </body>
 </html>
